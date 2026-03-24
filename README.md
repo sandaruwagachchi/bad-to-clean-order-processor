@@ -35,49 +35,6 @@ This project now contains both:
 - Beginner-friendly naming and small focused methods
 - Clean layer written with **Java classes and interfaces only** (`record` is not used in the clean package)
 
-## Refactored package structure
-
-```text
-src/main/java/com/training/clean
-  config
-    CleanApplicationFactory
-  controller
-    OrderController
-  dto
-    CreateOrderRequestDto
-    CreateOrderResponseDto
-    OrderItemRequestDto
-  model
-    Order (Builder pattern)
-    OrderItem
-    Customer
-    PaymentMethod
-    PaymentDetails
-    CreditCardDetails
-    PayPalDetails
-    BankTransferDetails
-  payment
-    PaymentStrategy (interface)
-    CreditCardPaymentStrategy
-    PayPalPaymentStrategy
-    BankTransferPaymentStrategy
-    PaymentProcessor
-    PaymentGateway (interface)
-    FakePaymentGatewayAdapter
-    PaymentResult
-  repository
-    OrderRepository (interface)
-    H2OrderRepository
-    CustomerSnapshot
-  notification
-    NotificationService (interface)
-    FileNotificationService
-  service
-    OrderService
-    DiscountCalculator
-    OrderPricing
-    OrderProcessingResult
-```
 
 ## Patterns and principles applied
 
@@ -111,11 +68,3 @@ mvn exec:java
 mvn package
 java -jar target/bad-order-processor.jar
 ```
-
-## 15-minute walkthrough guide
-
-1. Show the old `OrderProcessor` smell points quickly.
-2. Show the clean package map and layer responsibilities.
-3. Walk one request: Controller DTO -> Builder -> Service -> Strategy -> Repository.
-4. Show how adding a new payment method only needs a new strategy class.
-5. Close with testability improvement from dependency inversion.
