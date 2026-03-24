@@ -1,0 +1,10 @@
+INVOICE #1
+========================
+Customer: Alice Smith
+Address: 123 Main St, Springfield, NY
+Date: 2026-03-24T22:26:56.870729700
+
+Mouse x2 = $59.98
+Keyboard x1 = $79.99
+------------------------
+TOTAL: $140.91

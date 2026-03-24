@@ -1,0 +1,298 @@
+2026-03-24 17:36:27 | [STUB] POST https://api.paypal.com/v1/payments/payment
+2026-03-24 17:36:27 | [STUB] Charging PayPal account bob@example.com | amount: $21.59
+2026-03-24 17:36:27 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 17:36:27 | [STUB] event=order_placed order_id=1 value=21.59 customer_id=2
+2026-03-24 17:36:27 | [STUB] POST https://banking-api.com/transfer
+2026-03-24 17:36:27 | [STUB] ACH transfer from account ...5678 routing 123456789 | amount: $83.69
+2026-03-24 17:36:27 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 17:36:27 | [STUB] event=order_placed order_id=1 value=83.69 customer_id=1
+2026-03-24 17:36:27 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 17:36:27 | [STUB] Charging card **** **** **** 0000 | amount: $29.69
+2026-03-24 17:36:27 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 17:36:27 | [STUB] Charging card **** **** **** 1111 | amount: $29.69
+2026-03-24 17:36:27 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 17:36:27 | [STUB] event=order_placed order_id=1 value=29.69 customer_id=1
+2026-03-24 17:36:42 | ==============================================
+2026-03-24 17:36:42 |  CLEAN Order Processing - Day 4 Demo 
+2026-03-24 17:36:42 | ==============================================
+2026-03-24 17:36:42 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 17:36:42 | [STUB] Charging card **** **** **** 1111 | amount: $140.91
+2026-03-24 17:36:42 | Sending email to alice@example.com...
+Dear Alice Smith,
+
+Thank you for your order #1!
+
+Items:
+  - Mouse x2 @ $29.99
+  - Keyboard x1 @ $79.99
+
+Subtotal: $139.97
+Discount: -$9.50
+Tax: $10.44
+Total: $140.91
+
+Payment Method: CREDIT_CARD
+Transaction ID: CC-1774354002396
+
+Shipping to: 123 Main St, Springfield, NY
+
+Order will arrive in 3-5 business days.
+
+2026-03-24T17:36:42.412675600 | Order #1 | alice@example.com | $140.91 | CC-1774354002396
+2026-03-24 17:36:42 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 17:36:42 | [STUB] event=order_placed order_id=1 value=140.91 customer_id=1
+2026-03-24 17:36:42 | Scenario 1: Credit Card => SUCCESS | status=DONE | orderId=1 | total=140.91 | tx=CC-1774354002396
+2026-03-24 17:36:42 | [STUB] POST https://api.paypal.com/v1/payments/payment
+2026-03-24 17:36:42 | [STUB] Charging PayPal account bob@example.com | amount: $43.18
+2026-03-24 17:36:42 | Sending email to bob@example.com...
+Dear Bob Jones,
+
+Thank you for your order #2!
+
+Items:
+  - USB Hub x2 @ $19.99
+
+Subtotal: $39.98
+Discount: -$0.00
+Tax: $3.20
+Total: $43.18
+
+Payment Method: PAYPAL
+Transaction ID: PP-1774354002429
+
+Shipping to: 456 Oak Ave, Houston, TX
+
+Order will arrive in 3-5 business days.
+
+2026-03-24T17:36:42.432181500 | Order #2 | bob@example.com | $43.18 | PP-1774354002429
+2026-03-24 17:36:42 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 17:36:42 | [STUB] event=order_placed order_id=2 value=43.18 customer_id=2
+2026-03-24 17:36:42 | Scenario 2: PayPal => SUCCESS | status=DONE | orderId=2 | total=43.18 | tx=PP-1774354002429
+2026-03-24 17:36:42 | [STUB] POST https://banking-api.com/transfer
+2026-03-24 17:36:42 | [STUB] ACH transfer from account ...5678 routing 123456789 | amount: $1209.58
+2026-03-24 17:36:42 | Sending email to alice@example.com...
+Dear Alice Smith,
+
+Thank you for your order #3!
+
+Items:
+  - Laptop x1 @ $999.99
+  - Monitor x1 @ $399.99
+
+Subtotal: $1399.98
+Discount: -$280.00
+Tax: $89.60
+Total: $1209.58
+
+Payment Method: BANK_TRANSFER
+Transaction ID: BT-1774354002435
+
+Shipping to: 123 Main St, Springfield, NY
+
+Order will arrive in 3-5 business days.
+
+2026-03-24T17:36:42.438646 | Order #3 | alice@example.com | $1209.58 | BT-1774354002435
+2026-03-24 17:36:42 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 17:36:42 | [STUB] event=order_placed order_id=3 value=1209.58 customer_id=1
+2026-03-24 17:36:42 | Scenario 3: Bank Transfer => SUCCESS | status=DONE | orderId=3 | total=1209.58 | tx=BT-1774354002435
+2026-03-24 17:36:42 | Scenario 4: Unknown Product => FAILED | status=PRODUCT_NOT_FOUND: Hoverboard | orderId=-1 | total=0.00 | tx=
+2026-03-24 17:36:42 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 17:36:42 | [STUB] Charging card **** **** **** 0000 | amount: $30.94
+2026-03-24 17:36:42 | Scenario 5: Declined Card => FAILED | status=PAYMENT_FAILED: Card declined | orderId=-1 | total=0.00 | tx=
+2026-03-24 17:36:42 | ==============================================
+2026-03-24 17:36:42 | Check invoice_*.txt files and orders.log in project root
+2026-03-24 17:36:42 | ==============================================
+2026-03-24 22:18:31 | [STUB] POST https://api.paypal.com/v1/payments/payment
+2026-03-24 22:18:31 | [STUB] Charging PayPal account bob@example.com | amount: $21.59
+2026-03-24 22:18:31 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 22:18:31 | [STUB] event=order_placed order_id=1 value=21.59 customer_id=2
+2026-03-24 22:18:31 | [STUB] POST https://banking-api.com/transfer
+2026-03-24 22:18:31 | [STUB] ACH transfer from account ...5678 routing 123456789 | amount: $83.69
+2026-03-24 22:18:31 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 22:18:31 | [STUB] event=order_placed order_id=1 value=83.69 customer_id=1
+2026-03-24 22:18:31 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 22:18:31 | [STUB] Charging card **** **** **** 0000 | amount: $29.69
+2026-03-24 22:18:31 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 22:18:31 | [STUB] Charging card **** **** **** 1111 | amount: $29.69
+2026-03-24 22:18:31 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 22:18:31 | [STUB] event=order_placed order_id=1 value=29.69 customer_id=1
+2026-03-24 22:19:39 | ==============================================
+2026-03-24 22:19:39 |  CLEAN Order Processing - Day 4 Demo 
+2026-03-24 22:19:39 | ==============================================
+2026-03-24 22:19:39 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 22:19:39 | [STUB] Charging card **** **** **** 1111 | amount: $140.91
+2026-03-24 22:19:39 | Sending email to alice@example.com...
+Dear Alice Smith,
+
+Thank you for your order #1!
+
+Items:
+  - Mouse x2 @ $29.99
+  - Keyboard x1 @ $79.99
+
+Subtotal: $139.97
+Discount: -$9.50
+Tax: $10.44
+Total: $140.91
+
+Payment Method: CREDIT_CARD
+Transaction ID: CC-1774370979047
+
+Shipping to: 123 Main St, Springfield, NY
+
+Order will arrive in 3-5 business days.
+
+2026-03-24T22:19:39.059043600 | Order #1 | alice@example.com | $140.91 | CC-1774370979047
+2026-03-24 22:19:39 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 22:19:39 | [STUB] event=order_placed order_id=1 value=140.91 customer_id=1
+2026-03-24 22:19:39 | Scenario 1: Credit Card => SUCCESS | status=DONE | orderId=1 | total=140.91 | tx=CC-1774370979047
+2026-03-24 22:19:39 | [STUB] POST https://api.paypal.com/v1/payments/payment
+2026-03-24 22:19:39 | [STUB] Charging PayPal account bob@example.com | amount: $43.18
+2026-03-24 22:19:39 | Sending email to bob@example.com...
+Dear Bob Jones,
+
+Thank you for your order #2!
+
+Items:
+  - USB Hub x2 @ $19.99
+
+Subtotal: $39.98
+Discount: -$0.00
+Tax: $3.20
+Total: $43.18
+
+Payment Method: PAYPAL
+Transaction ID: PP-1774370979080
+
+Shipping to: 456 Oak Ave, Houston, TX
+
+Order will arrive in 3-5 business days.
+
+2026-03-24T22:19:39.083054600 | Order #2 | bob@example.com | $43.18 | PP-1774370979080
+2026-03-24 22:19:39 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 22:19:39 | [STUB] event=order_placed order_id=2 value=43.18 customer_id=2
+2026-03-24 22:19:39 | Scenario 2: PayPal => SUCCESS | status=DONE | orderId=2 | total=43.18 | tx=PP-1774370979080
+2026-03-24 22:19:39 | [STUB] POST https://banking-api.com/transfer
+2026-03-24 22:19:39 | [STUB] ACH transfer from account ...5678 routing 123456789 | amount: $1209.58
+2026-03-24 22:19:39 | Sending email to alice@example.com...
+Dear Alice Smith,
+
+Thank you for your order #3!
+
+Items:
+  - Laptop x1 @ $999.99
+  - Monitor x1 @ $399.99
+
+Subtotal: $1399.98
+Discount: -$280.00
+Tax: $89.60
+Total: $1209.58
+
+Payment Method: BANK_TRANSFER
+Transaction ID: BT-1774370979089
+
+Shipping to: 123 Main St, Springfield, NY
+
+Order will arrive in 3-5 business days.
+
+2026-03-24T22:19:39.094045300 | Order #3 | alice@example.com | $1209.58 | BT-1774370979089
+2026-03-24 22:19:39 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 22:19:39 | [STUB] event=order_placed order_id=3 value=1209.58 customer_id=1
+2026-03-24 22:19:39 | Scenario 3: Bank Transfer => SUCCESS | status=DONE | orderId=3 | total=1209.58 | tx=BT-1774370979089
+2026-03-24 22:19:39 | Scenario 4: Unknown Product => FAILED | status=PRODUCT_NOT_FOUND: Hoverboard | orderId=-1 | total=0.00 | tx=
+2026-03-24 22:19:39 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 22:19:39 | [STUB] Charging card **** **** **** 0000 | amount: $30.94
+2026-03-24 22:19:39 | Scenario 5: Declined Card => FAILED | status=PAYMENT_FAILED: Card declined | orderId=-1 | total=0.00 | tx=
+2026-03-24 22:19:39 | ==============================================
+2026-03-24 22:19:39 | Check invoice_*.txt files and orders.log in project root
+2026-03-24 22:19:39 | ==============================================
+2026-03-24 22:26:56 | ==============================================
+2026-03-24 22:26:56 |  CLEAN Order Processing - Day 4 Demo 
+2026-03-24 22:26:56 | ==============================================
+2026-03-24 22:26:56 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 22:26:56 | [STUB] Charging card **** **** **** 1111 | amount: $140.91
+2026-03-24 22:26:56 | Sending email to alice@example.com...
+Dear Alice Smith,
+
+Thank you for your order #1!
+
+Items:
+  - Mouse x2 @ $29.99
+  - Keyboard x1 @ $79.99
+
+Subtotal: $139.97
+Discount: -$9.50
+Tax: $10.44
+Total: $140.91
+
+Payment Method: CREDIT_CARD
+Transaction ID: CC-1774371416849
+
+Shipping to: 123 Main St, Springfield, NY
+
+Order will arrive in 3-5 business days.
+
+2026-03-24T22:26:56.862729800 | Order #1 | alice@example.com | $140.91 | CC-1774371416849
+2026-03-24 22:26:56 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 22:26:56 | [STUB] event=order_placed order_id=1 value=140.91 customer_id=1
+2026-03-24 22:26:56 | Scenario 1: Credit Card => SUCCESS | status=DONE | orderId=1 | total=140.91 | tx=CC-1774371416849
+2026-03-24 22:26:56 | [STUB] POST https://api.paypal.com/v1/payments/payment
+2026-03-24 22:26:56 | [STUB] Charging PayPal account bob@example.com | amount: $43.18
+2026-03-24 22:26:56 | Sending email to bob@example.com...
+Dear Bob Jones,
+
+Thank you for your order #2!
+
+Items:
+  - USB Hub x2 @ $19.99
+
+Subtotal: $39.98
+Discount: -$0.00
+Tax: $3.20
+Total: $43.18
+
+Payment Method: PAYPAL
+Transaction ID: PP-1774371416876
+
+Shipping to: 456 Oak Ave, Houston, TX
+
+Order will arrive in 3-5 business days.
+
+2026-03-24T22:26:56.879731200 | Order #2 | bob@example.com | $43.18 | PP-1774371416876
+2026-03-24 22:26:56 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 22:26:56 | [STUB] event=order_placed order_id=2 value=43.18 customer_id=2
+2026-03-24 22:26:56 | Scenario 2: PayPal => SUCCESS | status=DONE | orderId=2 | total=43.18 | tx=PP-1774371416876
+2026-03-24 22:26:56 | [STUB] POST https://banking-api.com/transfer
+2026-03-24 22:26:56 | [STUB] ACH transfer from account ...5678 routing 123456789 | amount: $1209.58
+2026-03-24 22:26:56 | Sending email to alice@example.com...
+Dear Alice Smith,
+
+Thank you for your order #3!
+
+Items:
+  - Laptop x1 @ $999.99
+  - Monitor x1 @ $399.99
+
+Subtotal: $1399.98
+Discount: -$280.00
+Tax: $89.60
+Total: $1209.58
+
+Payment Method: BANK_TRANSFER
+Transaction ID: BT-1774371416882
+
+Shipping to: 123 Main St, Springfield, NY
+
+Order will arrive in 3-5 business days.
+
+2026-03-24T22:26:56.885730100 | Order #3 | alice@example.com | $1209.58 | BT-1774371416882
+2026-03-24 22:26:56 | [STUB] POST https://analytics.company.com/api/event
+2026-03-24 22:26:56 | [STUB] event=order_placed order_id=3 value=1209.58 customer_id=1
+2026-03-24 22:26:56 | Scenario 3: Bank Transfer => SUCCESS | status=DONE | orderId=3 | total=1209.58 | tx=BT-1774371416882
+2026-03-24 22:26:56 | Scenario 4: Unknown Product => FAILED | status=PRODUCT_NOT_FOUND: Hoverboard | orderId=-1 | total=0.00 | tx=
+2026-03-24 22:26:56 | [STUB] POST https://payment-gateway.com/api/charge
+2026-03-24 22:26:56 | [STUB] Charging card **** **** **** 0000 | amount: $30.94
+2026-03-24 22:26:56 | Scenario 5: Declined Card => FAILED | status=PAYMENT_FAILED: Card declined | orderId=-1 | total=0.00 | tx=
+2026-03-24 22:26:56 | ==============================================
+2026-03-24 22:26:56 | Check invoice_*.txt files and orders.log in project root
+2026-03-24 22:26:56 | ==============================================

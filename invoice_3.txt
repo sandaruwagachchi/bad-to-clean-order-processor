@@ -1,0 +1,10 @@
+INVOICE #3
+========================
+Customer: Alice Smith
+Address: 123 Main St, Springfield, NY
+Date: 2026-03-24T22:26:56.885730100
+
+Laptop x1 = $999.99
+Monitor x1 = $399.99
+------------------------
+TOTAL: $1209.58

@@ -1,0 +1,9 @@
+INVOICE #2
+========================
+Customer: Bob Jones
+Address: 456 Oak Ave, Houston, TX
+Date: 2026-03-24T22:26:56.879731200
+
+USB Hub x2 = $39.98
+------------------------
+TOTAL: $43.18
